@@ -1,0 +1,39 @@
+h1{
+    background-color: rgb(101, 38, 248);
+    margin: ;
+    font-family: Roboto Condensed', sans-serif ;
+}
+
+body{
+  background: url(https://images.pexels.com/photos/42230/teddy-teddy-bear-association-ill-42230.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h2{
+  background-color: rosybrown;
+}
+
+header{
+    color: white;
+}
+
+aside{
+    width: 250px;
+    float: left;
+    background-color: whitesmoke;
+}
+
+article{
+    width: 700px;
+    float: right;
+    background-color: whitesmoke;
+}
+
+#map{
+    clear: both;
+}
+
+input{
+    display: block;
+}
