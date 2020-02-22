@@ -10,6 +10,10 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN8DkG8QqsdKoFo-8emAMh43v7RGvCfaw&libraries=places,geometry"
+            async defer></script>
+
+        <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Roboto+Condensed&display=swap" rel="stylesheet">
 
         <style>
             #map {
@@ -20,37 +24,55 @@
         <title>
             Public Health Resources Project
         </title>
+
+        <link rel="stylesheet" href="Public_Health_Resources.css">
+    
+        <!--This section is the heading for the web page-->
+    
     </head>
-    <body>
+    <body> 
+        <div id="container">
         <header>
             <h1>
                 Public Health Resources
         </h1>
     </header>
 
-    <form action=""  method="">
+    <!--This is a side bar that contains the form users will fill out to find resources-->
 
-        <label for="Zip">Set Home Zip Code</label>
-        
-        <input type="text" placeholder="Enter Zip Code" name="Zip" id="Zip">
+        <aside>
 
-        <p>   </p>
-        
-        <label for="Resources">Resources</label>
-        <select name="Resources" id="Resources">
-            <option value="no choice">     </option>
-            <option value="this">This</option>
-            <option value="that">That</option>
-            <option value="the other">The other</option>
-        </select>
-        <button>Go!</button>
-    </form>
+            <h2>Let's Get Started.</h2>
+            <form action=""  method="">
 
-        <h2>Vaccination Locations and Schedules</h2>
-       
-        <h2>Fitness Classes</h2>
-    
+                <label for="Zip">Set Home Zip Code</label>
+                
+                <input type="text" placeholder="Enter Zip Code" name="Zip" id="Zip">
         
+                <p>   </p>
+                
+                <label for="Resources">Resources</label>
+                <select name="Resources" id="Resources">
+                    <option value="no choice">     </option>
+                    <option value="vaccination locations">Vaccination Locations</option>
+                    <option value="fitness classes">Fitness Classes</option>
+                    <option value="the other">Outdoor Activity Locations</option>
+                </select>
+                <button>Go!</button>
+            </form>
+        </aside>
+    <!--This section is a small about us type article-->
+        <article>
+            <h2>We're Here to Help!
+            </h2>
+
+            <p>Communities thrive when residents are healthy. Part of public health is making wellness services easily accessible to residents. We provide tools within a central location for residents to find pharmacies where they can receive vaccinations, fitness classes, and public outdoor spaces to engage in physical activity</p>
+        <!--Add an image here-->
+
+        <img src="https://cdn.nohat.cc/thumb/f/720/comrawpixel478022.jpg" width="200" alt="">
+        </article>
+        
+
 
 
         <script src="" async defer></script>
@@ -61,7 +83,7 @@
             var lati = 31.8088, longi = -85.9700;
             var map;
 
-            function initMap() {
+            function initialize() {
                 map = new google.maps.Map(document.getElementById('map'),
                         {center: {lat: lati, lng: longi},
                         zoom: 14});
@@ -76,9 +98,9 @@
                     });
                 }
             }
+            
+            initialize();
         </script>
-
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN8DkG8QqsdKoFo-8emAMh43v7RGvCfaw&callback=initMap"
-            async defer></script>
+        </div>
     </body>
 </html>
