@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN8DkG8QqsdKoFo-8emAMh43v7RGvCfaw&libraries=places,geometry"
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN8DkG8QqsdKoFo-8emAMh43v7RGvCfaw&callback=initMap&libraries=places,geometry"
             async defer></script>
 
         <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Roboto+Condensed&display=swap" rel="stylesheet">
@@ -83,7 +83,7 @@
             var lati = 31.8088, longi = -85.9700;
             var map;
 
-            function initialize() {
+            function initMap() {
                 map = new google.maps.Map(document.getElementById('map'),
                         {center: {lat: lati, lng: longi},
                         zoom: 14});
@@ -98,8 +98,6 @@
                     });
                 }
             }
-            
-            initialize();
         </script>
         </div>
     </body>
