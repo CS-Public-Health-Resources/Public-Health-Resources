@@ -63,10 +63,10 @@
         </aside>
     <!--This section is a small about us type article-->
         <article>
-            <h2>We're Here to Help!
+            <h2 id='here'>We're Here to Help!
             </h2>
 
-            <p>Communities thrive when residents are healthy. Part of public health is making wellness services easily accessible to residents. We provide tools within a central location for residents to find pharmacies where they can receive vaccinations, fitness classes, and public outdoor spaces to engage in physical activity</p>
+            <p id='there'>Communities thrive when residents are healthy. Part of public health is making wellness services easily accessible to residents. We provide tools within a central location for residents to find pharmacies where they can receive vaccinations, fitness classes, and public outdoor spaces to engage in physical activity</p>
         <!--Add an image here-->
 
         <img src="https://cdn.nohat.cc/thumb/f/720/comrawpixel478022.jpg" width="200" alt="">
@@ -78,16 +78,21 @@
             var lati = 31.8088, longi = -85.9700;
             var map;
             var geocoder;
+            var service;
             
             function initMap() {
                 map = new google.maps.Map(document.getElementById('map'),
                         {center: {lat: lati, lng: longi},
                         zoom: 14});
-                    
+
                 geocoder = new google.maps.Geocoder();
+                //service = new google.maps.places.PlacesService(map);
+                //document.getElementById('here').innerHTML = "It worked.";
+                //document.getElementById('there').innerHTML = JSON.stringify(service);
+
 
                 document.getElementById('submit').addEventListener('click', () => {
-                    geocodeAddress(geocoder, map);
+                    geocodeAddress(geocoder, map, service);
                 });
                 
                 //Checks if user allows geolocation and, if so, updates the map
@@ -104,19 +109,41 @@
                 // }
             }
 
-            function geocodeAddress(geocoder, resultsMap) {
+            function geocodeAddress(geocoder, resultsMap,) {
                 var address = document.getElementById('Zip').value;
                 geocoder.geocode({'address': address}, (results, status) => {
                     if(status === 'OK') {
                         resultsMap.setCenter(results[0].geometry.location);
-                        var marker = new google.maps.Marker({
-                            map: resultsMap,
-                            position: results[0].geometry.location
-                        });
+                        // var marker = new google.maps.Marker({
+                        //     map: resultsMap,
+                        //     position: results[0].geometry.location
+                        //});
+                        // var request = {
+                        //     location: results[0].geometry.location,
+                        //     radius = 5000,
+                        //     type: ['gym']
+                        // }
+                        var userLoc = new google.maps.LatLng(results[0].geometry.location);
+                        var request = {
+                            location: userLoc,
+                            radius: '5000',
+                            type: ['restaurant']
+                        };
+                        service = new google.maps.places.PlacesService(map);
+                        service.nearbySearch(request, callback);
                     } else {
                         alert('Geocode was not successful for the following reason : ' + status);
                     }
                 });
+            }
+
+            function callback(results, status) {
+                document.getElementById('here').innerHTML = "It worked.";
+                if(status == google.maps.places.PlacesServiceStatus.OK) {
+                    for (var i = 0; i < results.length; i++) {
+                        createMarker(results[i]);
+                    }
+                }
             }
         </script>
         <!--</div>-->
