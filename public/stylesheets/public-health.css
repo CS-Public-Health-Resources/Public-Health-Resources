@@ -11,7 +11,7 @@ body{
 }
 
 h2{
-  background-color: blue;
+  background-color: rgba(8, 150, 155, 0.966);
 }
 
 header{
@@ -46,3 +46,10 @@ article{
 input{
     display: block;
 }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
